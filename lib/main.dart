@@ -1,21 +1,21 @@
-import 'package:flutter/material.dart';
-import 'package:http_app/counter_screen.dart';
+// import 'package:flutter/material.dart';
+// import 'package:http_app/counter_screen.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+// void main() {
+//   runApp(const MyApp());
+// }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: const CounterScreen(),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       home: const CounterScreen(),
+//     );
+//   }
+// }
 
 
 
@@ -181,91 +181,91 @@ class MyApp extends StatelessWidget {
 
 
 
-// import 'dart:convert';
-// import 'package:flutter/material.dart';
-// import 'package:http/http.dart';
+import 'dart:convert';
+import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 
-// void main() {
-//   runApp(const MyApp());
-// }
+void main() {
+  runApp(const MyApp());
+}
 
-// class MyApp extends StatelessWidget {
-//   const MyApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       debugShowCheckedModeBanner: false,
-//       title: 'Flutter Demo',
-//       theme: ThemeData(
-//         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-//       ),
-//       home: const MyHomePage(title: 'Flutter Api Page'),
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+      ),
+      home: const MyHomePage(title: 'Flutter Api Page'),
+    );
+  }
+}
 
-// class MyHomePage extends StatefulWidget {
-//   const MyHomePage({super.key, required this.title});
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key, required this.title});
 
-//   final String title;
+  final String title;
 
-//   @override
-//   State<MyHomePage> createState() => _MyHomePageState();
-// }
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
 
-// class _MyHomePageState extends State<MyHomePage> {
-//   List data = [];
-//   bool isLodaing = false;
+class _MyHomePageState extends State<MyHomePage> {
+  List data = [];
+  bool isLodaing = false;
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         backgroundColor: Colors.black,
-//         title: Text(widget.title, style: TextStyle(color: Colors.white)),
-//       ),
-//       body: ListView(
-//         children: [
-//           if (isLodaing) const LinearProgressIndicator(color: Colors.teal, backgroundColor: Colors.red,),
-//           Container(
-//             margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
-//             child: MaterialButton(
-//               height: 50,
-//               color: Colors.teal,
-//               textColor: Colors.white,
-//               onPressed: () async {
-//                 isLodaing = true;
-//                 setState(() {});
-//                 var response = await get(
-//                   Uri.parse('https://api.restful-api.dev/objects'),
-//                 );
-//                 var responseBody = jsonDecode(response.body);
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        title: Text(widget.title, style: TextStyle(color: Colors.white)),
+      ),
+      body: ListView(
+        children: [
+          if (isLodaing) const LinearProgressIndicator(color: Colors.teal, backgroundColor: Colors.red,),
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+            child: MaterialButton(
+              height: 50,
+              color: Colors.teal,
+              textColor: Colors.white,
+              onPressed: () async {
+                isLodaing = true;
+                setState(() {});
+                var response = await get(
+                  Uri.parse('https://api.restful-api.dev/objects'),
+                );
+                var responseBody = jsonDecode(response.body);
 
-//                 setState(() {
-//                   data.clear();
-//                   isLodaing = false;
-//                   data.addAll(responseBody);
-//                 });
-//               },
-//               child: Text('Http Request', style: TextStyle(fontSize: 30)),
-//             ),
-//           ),
-//           ...List.generate(
-//             data.length,
-//             (index) => Card(
-//               child: ListTile(
-//                 title: Text('Device: ${data[index]['name']}'),
-//                 // دي الطريقة الغلط اللي كنت بستخدمها ومش شغالة
-//                 // subtitle: Text('${data[index]['data']['color]}'), 
-//                 subtitle: Text(
-//                   'Color: ${data[index]['data']?['color'] ?? data[index]['data']?['Color'] ?? data[index]['data']?['Srap Colour'] ?? 'N/A'}',
-//                 ),
-//               ),
-//             ),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
+                setState(() {
+                  data.clear();
+                  isLodaing = false;
+                  data.addAll(responseBody);
+                });
+              },
+              child: Text('Http Request', style: TextStyle(fontSize: 30)),
+            ),
+          ),
+          ...List.generate(
+            data.length,
+            (index) => Card(
+              child: ListTile(
+                title: Text('Device: ${data[index]['name']}'),
+                // دي الطريقة الغلط اللي كنت بستخدمها ومش شغالة
+                // subtitle: Text('${data[index]['data']['color]}'), 
+                subtitle: Text(
+                  'Color: ${data[index]['data']?['color'] ?? data[index]['data']?['Color'] ?? data[index]['data']?['Strap Colour'] ?? 'N/A'}',
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
