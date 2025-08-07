@@ -1,3 +1,89 @@
+import 'package:flutter/material.dart';
+import 'package:http_app/login_screen.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Login Screen',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.red.shade100),
+      ),
+      home: LoginScreen(),
+    );
+  }
+}
+
+
+
+
+
+
+
+
+
+
+// import 'package:flutter/material.dart';
+// import 'package:http_app/counter_screen.dart';
+// import 'package:http_app/cubit.dart';
+
+// void main() {
+//   runApp(const MyApp());
+// }
+
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       title: 'Flutter Demo',
+//       theme: ThemeData(
+//         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+//       ),
+//       home: const MyHomePage(title: 'Flutter Api Page'),
+//     );
+//   }
+// }
+
+// class MyHomePage extends StatelessWidget {
+//   const MyHomePage({super.key, required this.title});
+
+//   final String title;
+  
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       backgroundColor: Colors.white,
+//       appBar: AppBar(
+//         title: Text('Container Test', style: TextStyle(color: Colors.white)),
+//         backgroundColor: Colors.black,
+//       ),
+//       body: Container(
+//         // color: Colors.amberAccent,
+//         padding: EdgeInsets.all(20),
+//         height: 300,
+//         child: MaterialButton(onPressed: (){
+//           Navigator.of(context).push(MaterialPageRoute(builder: (context)=> CounterScreen()));
+//         }),
+//       ),
+//     );
+//   }
+// }
+
+
+
+
+
+
 // import 'package:flutter/material.dart';
 // import 'package:http_app/counter_screen.dart';
 
@@ -181,91 +267,94 @@
 
 
 
-import 'dart:convert';
-import 'package:flutter/material.dart';
-import 'package:http/http.dart';
+// import 'dart:convert';
+// import 'package:flutter/material.dart';
+// import 'package:http/http.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+// void main() {
+//   runApp(const MyApp());
+// }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
-      home: const MyHomePage(title: 'Flutter Api Page'),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       title: 'Flutter Demo',
+//       theme: ThemeData(
+//         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+//       ),
+//       home: const MyHomePage(title: 'Flutter Api Page'),
+//     );
+//   }
+// }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+// class MyHomePage extends StatefulWidget {
+//   const MyHomePage({super.key, required this.title});
 
-  final String title;
+//   final String title;
 
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
+//   @override
+//   State<MyHomePage> createState() => _MyHomePageState();
+// }
 
-class _MyHomePageState extends State<MyHomePage> {
-  List data = [];
-  bool isLodaing = false;
+// class _MyHomePageState extends State<MyHomePage> {
+//   List data = [];
+//   bool isLodaing = false;
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-        title: Text(widget.title, style: TextStyle(color: Colors.white)),
-      ),
-      body: ListView(
-        children: [
-          if (isLodaing) const LinearProgressIndicator(color: Colors.teal, backgroundColor: Colors.red,),
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
-            child: MaterialButton(
-              height: 50,
-              color: Colors.teal,
-              textColor: Colors.white,
-              onPressed: () async {
-                isLodaing = true;
-                setState(() {});
-                var response = await get(
-                  Uri.parse('https://api.restful-api.dev/objects'),
-                );
-                var responseBody = jsonDecode(response.body);
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         backgroundColor: Colors.black,
+//         title: Text(widget.title, style: TextStyle(color: Colors.white)),
+//       ),
+//       body: ListView(
+//         children: [
+//           if (isLodaing) const LinearProgressIndicator(color: Colors.teal, backgroundColor: Colors.red,),
+//           Container(
+//             margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+//             child: MaterialButton(
+//               height: 50,
+//               color: Colors.teal,
+//               textColor: Colors.white,
+//               onPressed: () async {
+//                 isLodaing = true;
+//                 setState(() {});
+//                 var response = await get(
+//                   Uri.parse('https://api.restful-api.dev/objects'),
+//                 );
+//                 var responseBody = jsonDecode(response.body);
 
-                setState(() {
-                  data.clear();
-                  isLodaing = false;
-                  data.addAll(responseBody);
-                });
-              },
-              child: Text('Http Request', style: TextStyle(fontSize: 30)),
-            ),
-          ),
-          ...List.generate(
-            data.length,
-            (index) => Card(
-              child: ListTile(
-                title: Text('Device: ${data[index]['name']}'),
-                // دي الطريقة الغلط اللي كنت بستخدمها ومش شغالة
-                // subtitle: Text('${data[index]['data']['color]}'), 
-                subtitle: Text(
-                  'Color: ${data[index]['data']?['color'] ?? data[index]['data']?['Color'] ?? data[index]['data']?['Strap Colour'] ?? 'N/A'}',
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
+//                 setState(() {
+//                   data.clear();
+//                   isLodaing = false;
+//                   data.addAll(responseBody);
+//                 });
+//               },
+//               child: Text('Http Request', style: TextStyle(fontSize: 30)),
+//             ),
+//           ),
+//           ...List.generate(
+//             data.length,
+//             (index) => Card(
+//               child: ListTile(
+//                 title: Text('Device: ${data[index]['name']}'),
+//                 // دي الطريقة الغلط اللي كنت بستخدمها ومش شغالة
+//                 // subtitle: Text('${data[index]['data']['color]}'), 
+//                 subtitle: Text(
+//                   'Color: ${data[index]['data']?['color'] ?? data[index]['data']?['Color'] ?? data[index]['data']?['Strap Colour'] ?? 'N/A'}',
+//                 ),
+//               ),
+//             ),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
+
+
+
