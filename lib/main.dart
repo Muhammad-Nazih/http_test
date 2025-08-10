@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:http_app/login_screen.dart';
+import 'package:http_app/screens/login_screen.dart';
+import 'package:http_app/screens/azkar_home_screen.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -18,9 +19,20 @@ class MyApp extends StatelessWidget {
       title: 'Login Screen',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.red.shade100),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal.shade100),
+        appBarTheme: AppBarTheme(
+          titleTextStyle: TextStyle(
+            color: Colors.white,
+            fontFamily: 'Tajawal',
+            fontSize: 25.0,
+            fontWeight: FontWeight.bold,
+          ),
+          centerTitle: true,
+          backgroundColor: Colors.teal,
+          elevation: 0,
+        ),
       ),
-      home: LoginScreen(),
+      home: AzkarHomeScreen(),
     );
   }
 }
