@@ -31,6 +31,7 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colors.teal,
           elevation: 0,
         ),
+        scaffoldBackgroundColor: Colors.white, 
       ),
       home: AzkarHomeScreen(),
     );
