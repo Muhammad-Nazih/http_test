@@ -7,6 +7,7 @@ class ProductsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
         child: Column(
           children: [
             SizedBox(
@@ -14,6 +15,11 @@ class ProductsScreen extends StatelessWidget {
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
+                  Container(color: Colors.blue, width: 200, height: 200),
+                  Container(color: Colors.red, width: 200, height: 200),
+                  Container(color: Colors.green, width: 200, height: 200),
+                  Container(color: Colors.black, width: 200, height: 200),
+                  Container(color: Colors.yellow, width: 200, height: 200),
                   Container(color: Colors.blue, width: 200, height: 200),
                   Container(color: Colors.red, width: 200, height: 200),
                   Container(color: Colors.green, width: 200, height: 200),

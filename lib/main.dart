@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http_app/screens/login_screen.dart';
-import 'package:http_app/screens/azkar_home_screen.dart';
 
 void main() {
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    statusBarColor: Colors.white,
-  ));
+  SystemChrome.setSystemUIOverlayStyle(
+    SystemUiOverlayStyle(statusBarColor: Colors.white),
+  );
   runApp(MyApp());
 }
 
@@ -19,24 +18,75 @@ class MyApp extends StatelessWidget {
       title: 'Login Screen',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal.shade100),
-        appBarTheme: AppBarTheme(
-          titleTextStyle: TextStyle(
-            color: Colors.white,
-            fontFamily: 'Tajawal',
-            fontSize: 25.0,
-            fontWeight: FontWeight.bold,
-          ),
-          centerTitle: true,
-          backgroundColor: Colors.teal,
-          elevation: 0,
-        ),
-        scaffoldBackgroundColor: Colors.white, 
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.red.shade100),
       ),
-      home: AzkarHomeScreen(),
+      home: const LoginScreen(),
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import 'package:flutter/material.dart';
+// import 'package:flutter/services.dart';
+// import 'package:http_app/screens/login_screen.dart';
+// import 'package:http_app/screens/azkar_home_screen.dart';
+
+// void main() {
+//   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+//     statusBarColor: Colors.white,
+//   ));
+//   runApp(MyApp());
+// }
+
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: 'Login Screen',
+//       debugShowCheckedModeBanner: false,
+//       theme: ThemeData(
+//         colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal.shade100),
+//         appBarTheme: AppBarTheme(
+//           titleTextStyle: TextStyle(
+//             color: Colors.white,
+//             fontFamily: 'Tajawal',
+//             fontSize: 25.0,
+//             fontWeight: FontWeight.bold,
+//           ),
+//           centerTitle: true,
+//           backgroundColor: Colors.teal,
+//           elevation: 0,
+//         ),
+//         scaffoldBackgroundColor: Colors.white, 
+//       ),
+//       home: AzkarHomeScreen(),
+//     );
+//   }
+// }
 
 
 
