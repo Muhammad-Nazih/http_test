@@ -38,6 +38,8 @@ dependencies:
   bloc: ^9.0.0
   flutter_bloc: ^9.1.1
   sign_button: ^2.0.6
+  flutter_native_splash: ^2.4.6
+  curved_navigation_bar: ^1.0.6
 
 dev_dependencies:
   flutter_test:
@@ -82,6 +84,9 @@ flutter:
     - family: Tajawal
       fonts:
         - asset: assets/fonts/Tajawal-Regular.ttf
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-SemiBold.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
@@ -92,3 +97,22 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+
+
+flutter_native_splash:
+  android: true
+  ios: true
+
+  color: "#D64151"
+  image: assets/images/splashscreen.png
+  branding: assets/images/brandimage.png
+
+  branding_bottom_padding_ios: 35
+
+  color_dark: "#332828"
+
+  android_12:
+    color: "#D64151"
+    color_dark: "#332828"
+    image: assets/images/android12splash.png
+    branding: assets/images/brandimage.png

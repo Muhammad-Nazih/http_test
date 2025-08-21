@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:http_app/screens/food_app/food_home.dart';
 import 'package:http_app/screens/login_screen.dart';
 
 void main() {
@@ -15,15 +16,58 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Login Screen',
+      title: 'Food Delivery App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.red.shade100),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
       ),
-      home: const LoginScreen(),
+      home: const FoodHome(),
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import 'package:flutter/material.dart';
+// import 'package:flutter/services.dart';
+// import 'package:http_app/screens/login_screen.dart';
+
+// void main() {
+//   WidgetsFlutterBinding.ensureInitialized();
+//   SystemChrome.setSystemUIOverlayStyle(
+//     SystemUiOverlayStyle(statusBarColor: Colors.white),
+//   );
+//   runApp(MyApp());
+// }
+
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: 'Login Screen',
+//       debugShowCheckedModeBanner: false,
+//       theme: ThemeData(
+//         colorScheme: ColorScheme.fromSeed(seedColor: Colors.red.shade100),
+//       ),
+//       home: const LoginScreen(),
+//     );
+//   }
+// }
 
 
 
