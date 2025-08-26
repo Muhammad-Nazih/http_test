@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http_app/screens/food_app/food_home.dart';
 import 'package:http_app/screens/login_screen.dart';
+import 'package:http_app/widgets/bottom_nav_bar.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
       ),
-      home: const FoodHome(),
+      home: const BottomNavBar(),
     );
   }
 }

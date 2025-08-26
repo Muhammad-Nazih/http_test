@@ -40,6 +40,7 @@ dependencies:
   sign_button: ^2.0.6
   flutter_native_splash: ^2.4.6
   curved_navigation_bar: ^1.0.6
+  carousel_slider: ^5.1.1
 
 dev_dependencies:
   flutter_test:

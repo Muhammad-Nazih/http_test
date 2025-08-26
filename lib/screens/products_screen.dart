@@ -35,7 +35,7 @@ class ProductsScreen extends StatelessWidget {
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
               ),
-              itemBuilder: (context, indexx) => Padding(
+              itemBuilder: (context, index) => Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(height: 150, width: 150, color: Colors.blue),
               ),

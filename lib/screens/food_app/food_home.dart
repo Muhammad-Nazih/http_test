@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:http_app/widgets/widgets_support.dart';
 
@@ -20,7 +21,7 @@ class _FoodHomeState extends State<FoodHome> {
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.only(top: 40.0, left: 20.0, right: 20.0),
+          padding: const EdgeInsets.only(top: 40.0, left: 15.0, right: 15.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -29,7 +30,7 @@ class _FoodHomeState extends State<FoodHome> {
                 children: [
                   Text(
                     'Hello, Muhammad...',
-                    style: AppWidget.boldTextFieldStyle(),
+                    style: AppWidget.bold1TextFieldStyle(),
                   ),
                   Container(
                     padding: EdgeInsets.all(3),
@@ -42,348 +43,222 @@ class _FoodHomeState extends State<FoodHome> {
                 ],
               ),
               SizedBox(height: 20),
-              Text(
-                'Delicious Food',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 30,
-                  fontFamily: 'Poppins',
+              CarouselSlider(
+                options: CarouselOptions(
+                  height: 200,
+                  autoPlay: true,
+                  autoPlayInterval: Duration(seconds: 7),
+                  viewportFraction: 1,
+                ),
+                items: List.generate(
+                  10,
+                  (index) => ClipRRect(
+                    borderRadius: BorderRadius.circular(16),
+                    child: Image.network(
+                      'https://picsum.photos/400?random=$index',
+                      fit: BoxFit.cover,
+                      width: double.infinity,
+                    ),
+                  ),
                 ),
               ),
-              Text(
-                'Discover and Get Great Food',
-                style: TextStyle(
-                  color: Colors.grey,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 15,
-                  fontFamily: 'Poppins',
-                ),
-              ),
+              // Text(
+              //   'Delicious Food',
+              //   style: TextStyle(
+              //     fontWeight: FontWeight.bold,
+              //     fontSize: 30,
+              //     fontFamily: 'Poppins',
+              //   ),
+              // ),
+              // Text(
+              //   'Discover and Get Great Food',
+              //   style: TextStyle(
+              //     color: Colors.grey,
+              //     fontWeight: FontWeight.bold,
+              //     fontSize: 15,
+              //     fontFamily: 'Poppins',
+              //   ),
+              // ),
               SizedBox(height: 20.0),
               showItem(),
               SizedBox(height: 20.0),
-              SizedBox(
-                height: MediaQuery.of(context).size.shortestSide/1.183,
-                width: MediaQuery.of(context).size.width,
-                child: ListView.builder(
-                  physics: BouncingScrollPhysics(),
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 5,
-                  itemBuilder: (context, index) => Container(
-                    margin: EdgeInsets.only(top: 10, bottom: 10, right: 20, left: 5),
-                    child: Material(
-                      elevation: 5,
-                      borderRadius: BorderRadius.circular(20),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        padding: EdgeInsets.all(20),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Image.asset(
-                              'assets/images/salad2.png',
-                              width: 150,
-                              height: 150,
-                              fit: BoxFit.cover,
-                            ),
-                            SizedBox(height: 5,),
-                            Text(
-                              'Veggie Taco Hash',
-                              style: AppWidget.boldTextFieldStyle(),
-                            ),
-                            SizedBox(height: 5,),
-                            Text(
-                              'Fresh and Healthy',
-                              style: TextStyle(
-                                color: Colors.grey,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15,
-                                fontFamily: 'Poppins',
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Recommened for you',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                      fontFamily: 'Poppins',
+                    ),
+                  ),
+                  Text(
+                    'See More',
+                    style: TextStyle(
+                      decoration: TextDecoration.underline,
+                      color: Colors.grey,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 13,
+                      fontFamily: 'Poppins',
+                    ),
+                  ),
+                ],
+              ),
+              GridView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: 10,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 0,
+                  mainAxisSpacing: 0,
+                  childAspectRatio: 0.65,
+                ),
+                itemBuilder: (context, index) => Container(
+                  width: double.infinity,
+                  height: double.infinity,
+                  margin: EdgeInsets.only(top: 5, bottom: 5, right: 5, left: 5),
+                  child: Material(
+                    elevation: 5,
+                    borderRadius: BorderRadius.circular(20),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      padding: EdgeInsets.all(20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: Center(
+                              child: Image.asset(
+                                'assets/images/salad2.png',
+                                width: 110,
+                                height: 110,
+                                fit: BoxFit.cover,
                               ),
                             ),
-                            SizedBox(height: 5,),
-                            Text('\$25', style: AppWidget.boldTextFieldStyle()),
-                          ],
-                        ),
+                          ),
+                          SizedBox(height: 5),
+                          Text(
+                            'Veggie Taco Hash',
+                            style: TextStyle(
+                              overflow: TextOverflow.ellipsis,
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Poppins',
+                            ),
+                          ),
+                          SizedBox(height: 5),
+                          Text(
+                            'Fresh and Healthy',
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12,
+                              fontFamily: 'Poppins',
+                            ),
+                          ),
+                          SizedBox(height: 5),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                '\$25.00',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Poppins',
+                                ),
+                              ),
+                              Expanded(
+                                child: IconButton(
+                                  onPressed: () {},
+                                  icon: Container(
+                                    decoration: BoxDecoration(
+                                      color: Colors.black,
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: Icon(Icons.add, color: Colors.white,),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                     ),
                   ),
                 ),
               ),
-              ListView.builder(
-                shrinkWrap: true,
-                  physics: BouncingScrollPhysics(),
-                  // scrollDirection: Axis.vertical,
-                  itemCount: 5,
-                  itemBuilder: (context, index) => Container(
-                    // margin: EdgeInsets.only(top: 10, bottom: 10, right: 20, left: 5),
-                    child: Material(
-                      elevation: 5,
-                      borderRadius: BorderRadius.circular(20),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        padding: EdgeInsets.all(20),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Image.asset(
-                              'assets/images/salad2.png',
-                              width: 120,
-                              height: 120,
-                              fit: BoxFit.cover,
-                            ),
-                            SizedBox(width: 10,),
-                            Column(
-                              children: [
-                                Container(
-                                  width: MediaQuery.of(context).size.width/3,
-                                  child: Text(
-                                    'Veggie Taco Hash',
-                                    style: AppWidget.boldTextFieldStyle(),
-                                  ),
-                                ),
-                                SizedBox(height: 5,),
-                                Container(
-                                  width: MediaQuery.of(context).size.width/3,
-                                  child: Text(
-                                    'Fresh and Healthy',
-                                    style: TextStyle(
-                                      color: Colors.grey,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 15,
-                                      fontFamily: 'Poppins',
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(height: 5,),
-                                Container(
-                                  width: MediaQuery.of(context).size.width/3,
-                                  child: Text('\$25', style: AppWidget.boldTextFieldStyle())),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
 
-              //             SizedBox(
-              //               height: 250,
-              //               width: double.infinity,
-              //               child: ListView(
-              //                 scrollDirection: Axis.horizontal,
-              //                 children: [
-              //                   Padding(
-              //                     padding: const EdgeInsets.all(12.0),
-              //                     child: Card(
-              //                       child: Column(
-              //                         children: [
-              //                           Container(
-              //                             decoration: BoxDecoration(
-              //                               borderRadius: BorderRadius.circular(100),
-              //                             ),
-              //                             width: 200,
-              //                             height: 200,
-              //                             child: Image.asset('assets/images/salad2.png'),
-              //                           ),
-              //                         ],
-              //                       ),
-              //                     ),
-              //                   ),
-              //                   Padding(
-              //                     padding: const EdgeInsets.all(12.0),
-              //                     child: Card(
-              //                       child: Container(
-              //                         decoration: BoxDecoration(
-              //                           borderRadius: BorderRadius.circular(20),
-              //                         ),
-              //                         width: 200,
-              //                         height: 200,
-              //                         child: Image.asset('assets/images/salad2.png'),
-              //                       ),
-              //                     ),
-              //                   ),
-              //                   Padding(
-              //                     padding: const EdgeInsets.all(12.0),
-              //                     child: Card(
-              //                       child: Container(
-              //                         decoration: BoxDecoration(
-              //                           borderRadius: BorderRadius.circular(20),
-              //                         ),
-              //                         width: 200,
-              //                         height: 200,
-              //                         child: Image.asset('assets/images/salad2.png'),
-              //                       ),
-              //                     ),
-              //                   ),
-              //                   Padding(
-              //                     padding: const EdgeInsets.all(12.0),
-              //                     child: Card(
-              //                       child: Container(
-              //                         decoration: BoxDecoration(
-              //                           borderRadius: BorderRadius.circular(20),
-              //                         ),
-              //                         width: 200,
-              //                         height: 200,
-              //                         child: Image.asset('assets/images/salad2.png'),
-              //                       ),
-              //                     ),
-              //                   ),
-              //                   Padding(
-              //                     padding: const EdgeInsets.all(10.0),
-              //                     child: Card(
-              //                       child: Container(
-              //                         decoration: BoxDecoration(
-              //                           borderRadius: BorderRadius.circular(20),
-              //                         ),
-              //                         width: 200,
-              //                         height: 200,
-              //                         child: Image.asset('assets/images/salad2.png'),
-              //                       ),
-              //                     ),
-              //                   ),
-              //                   Padding(
-              //                     padding: const EdgeInsets.all(10.0),
-              //                     child: Container(
-              //                       decoration: BoxDecoration(
-              //                         borderRadius: BorderRadius.circular(20),
-              //                       ),
-              //                       width: 200,
-              //                       height: 200,
-              //                       child: Image.asset('assets/images/salad2.png'),
-              //                     ),
-              //                   ),
-              //                   Padding(
-              //                     padding: const EdgeInsets.all(10.0),
-              //                     child: Container(
-              //                       decoration: BoxDecoration(
-              //                         borderRadius: BorderRadius.circular(20),
-              //                       ),
-              //                       width: 200,
-              //                       height: 200,
-              //                       child: Image.asset('assets/images/salad2.png'),
-              //                     ),
-              //                   ),
-              //                   Padding(
-              //                     padding: const EdgeInsets.all(10.0),
-              //                     child: Container(
-              //                       decoration: BoxDecoration(
-              //                         borderRadius: BorderRadius.circular(20),
-              //                       ),
-              //                       width: 200,
-              //                       height: 200,
-              //                       child: Image.asset('assets/images/salad2.png'),
-              //                     ),
-              //                   ),
-              //                   Padding(
-              //                     padding: const EdgeInsets.all(10.0),
-              //                     child: Container(
-              //                       decoration: BoxDecoration(
-              //                         borderRadius: BorderRadius.circular(20),
-              //                       ),
-              //                       width: 200,
-              //                       height: 200,
-              //                       child: Image.asset('assets/images/salad2.png'),
-              //                     ),
-              //                   ),
-              //                 ],
-              //               ),
+              // ListView.separated(
+              //   separatorBuilder: (context, index) => SizedBox(height: 20),
+              //   shrinkWrap: true,
+              //   physics: BouncingScrollPhysics(),
+              //   // scrollDirection: Axis.vertical,
+              //   itemCount: 5,
+              //   itemBuilder: (context, index) => Container(
+              //     // margin: EdgeInsets.only(top: 10, bottom: 10, right: 20, left: 5),
+              //     child: Material(
+              //       elevation: 5,
+              //       borderRadius: BorderRadius.circular(20),
+              //       child: Container(
+              //         decoration: BoxDecoration(
+              //           color: Colors.white,
+              //           borderRadius: BorderRadius.circular(20),
+              //         ),
+              //         padding: EdgeInsets.all(20),
+              //         child: Row(
+              //           crossAxisAlignment: CrossAxisAlignment.start,
+              //           children: [
+              //             Image.asset(
+              //               'assets/images/salad2.png',
+              //               width: 120,
+              //               height: 120,
+              //               fit: BoxFit.cover,
               //             ),
-              //             SizedBox(height: 20.0),
-              //             SizedBox(
-              //               height: 200,
-              //               child: ListView(
-              //                 shrinkWrap: true,
-              //                 // physics: NeverScrollableScrollPhysics(),
-              //                 children: [
-              //                   Padding(
-              //                     padding: const EdgeInsets.all(12.0),
-              //                     child: Card(
-              //                       child: Container(
-              //                         decoration: BoxDecoration(
-              //                           borderRadius: BorderRadius.circular(100),
-              //                         ),
-              //                         width: double.infinity,
-              //                         height: 200,
-              //                         child: Image.asset('assets/images/salad2.png'),
-              //                       ),
+              //             SizedBox(width: 10),
+              //             Column(
+              //               children: [
+              //                 Container(
+              //                   width: MediaQuery.of(context).size.width / 3,
+              //                   child: Text(
+              //                     'Veggie Taco Hash',
+              //                     style: AppWidget.bold2TextFieldStyle(),
+              //                   ),
+              //                 ),
+              //                 SizedBox(height: 5),
+              //                 Container(
+              //                   width: MediaQuery.of(context).size.width / 3,
+              //                   child: Text(
+              //                     'Fresh and Healthy',
+              //                     style: TextStyle(
+              //                       color: Colors.grey,
+              //                       fontWeight: FontWeight.bold,
+              //                       fontSize: 15,
+              //                       fontFamily: 'Poppins',
               //                     ),
               //                   ),
-              //                   Padding(
-              //                     padding: const EdgeInsets.all(12.0),
-              //                     child: Card(
-              //                       child: Container(
-              //                         decoration: BoxDecoration(
-              //                           borderRadius: BorderRadius.circular(100),
-              //                         ),
-              //                         width: double.infinity,
-              //                         height: 200,
-              //                         child: Image.asset('assets/images/salad2.png'),
-              //                       ),
-              //                     ),
+              //                 ),
+              //                 SizedBox(height: 5),
+              //                 Container(
+              //                   width: MediaQuery.of(context).size.width / 3,
+              //                   child: Text(
+              //                     '\$25',
+              //                     style: AppWidget.bold1TextFieldStyle(),
               //                   ),
-              //                   Padding(
-              //                     padding: const EdgeInsets.all(12.0),
-              //                     child: Card(
-              //                       child: Container(
-              //                         decoration: BoxDecoration(
-              //                           borderRadius: BorderRadius.circular(100),
-              //                         ),
-              //                         width: double.infinity,
-              //                         height: 200,
-              //                         child: Image.asset('assets/images/salad2.png'),
-              //                       ),
-              //                     ),
-              //                   ),
-              //                   Padding(
-              //                     padding: const EdgeInsets.all(12.0),
-              //                     child: Card(
-              //                       child: Container(
-              //                         decoration: BoxDecoration(
-              //                           borderRadius: BorderRadius.circular(100),
-              //                         ),
-              //                         width: double.infinity,
-              //                         height: 200,
-              //                         child: Image.asset('assets/images/salad2.png'),
-              //                       ),
-              //                     ),
-              //                   ),
-              //                   Padding(
-              //                     padding: const EdgeInsets.all(12.0),
-              //                     child: Card(
-              //                       child: Container(
-              //                         decoration: BoxDecoration(
-              //                           borderRadius: BorderRadius.circular(100),
-              //                         ),
-              //                         width: double.infinity,
-              //                         height: 200,
-              //                         child: Image.asset('assets/images/salad2.png'),
-              //                       ),
-              //                     ),
-              //                   ),
-              //                   Padding(
-              //                     padding: const EdgeInsets.all(12.0),
-              //                     child: Card(
-              //                       child: Container(
-              //                         decoration: BoxDecoration(
-              //                           borderRadius: BorderRadius.circular(100),
-              //                         ),
-              //                         width: double.infinity,
-              //                         height: 200,
-              //                         child: Image.asset('assets/images/salad2.png'),
-              //                       ),
-              //                     ),
-              //                   ),
-              //                 ],
-              //               ),
+              //                 ),
+              //               ],
               //             ),
+              //           ],
+              //         ),
+              //       ),
+              //     ),
+              //   ),
+              // ),
             ],
           ),
         ),
