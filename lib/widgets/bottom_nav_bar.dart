@@ -38,15 +38,15 @@ class _BottomNavBarState extends State<BottomNavBar> {
         height: 65,
         backgroundColor: Colors.white,
         color: Colors.black,
-        animationDuration: Duration(microseconds: 500),
+        animationDuration: Duration(microseconds: 1000),
         onTap: (int index) {
           curentTabIndex = index;
         },
         items: [
           Icon(Icons.home_outlined, color: Colors.white),
-          Icon(Icons.shopping_bag_outlined, color: Colors.white),
-          Icon(Icons.wallet_outlined, color: Colors.white),
-          Icon(Icons.person_outlined, color: Colors.white),
+          Icon(Icons.apps, color: Colors.white),
+          Icon(Icons.shopping_cart, color: Colors.white),
+          Icon(Icons.settings, color: Colors.white),
         ],
       ),
       body: pages[curentTabIndex],

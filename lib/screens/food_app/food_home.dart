@@ -15,9 +15,18 @@ class _FoodHomeState extends State<FoodHome> {
   bool salad = false;
   bool burger = false;
 
+  List<String> images = [
+    'assets/images/food1.jfif',
+    'assets/images/food2.jfif',
+    'assets/images/food3.jpg',
+    'assets/images/food4.jpg',
+    'assets/images/food5.jfif',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Padding(
@@ -26,19 +35,20 @@ class _FoodHomeState extends State<FoodHome> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Hello, Muhammad...',
+                    'Hello, Muhammad Nazih',
+                    overflow: TextOverflow.ellipsis,
                     style: AppWidget.bold1TextFieldStyle(),
                   ),
+                  Spacer(),
                   Container(
-                    padding: EdgeInsets.all(3),
-                    decoration: BoxDecoration(
-                      color: Colors.black,
-                      borderRadius: BorderRadius.circular(10),
+                    padding: EdgeInsets.zero,
+                    child: IconButton(
+                      padding: EdgeInsets.zero,
+                      onPressed: () {},
+                      icon: Icon(Icons.search),
                     ),
-                    child: Icon(Icons.shopping_cart, color: Colors.white),
                   ),
                 ],
               ),
@@ -47,15 +57,16 @@ class _FoodHomeState extends State<FoodHome> {
                 options: CarouselOptions(
                   height: 200,
                   autoPlay: true,
-                  autoPlayInterval: Duration(seconds: 7),
+                  autoPlayCurve: Curves.fastOutSlowIn,
+                  autoPlayInterval: Duration(seconds: 5),
                   viewportFraction: 1,
                 ),
                 items: List.generate(
-                  10,
+                  images.length,
                   (index) => ClipRRect(
                     borderRadius: BorderRadius.circular(16),
-                    child: Image.network(
-                      'https://picsum.photos/400?random=$index',
+                    child: Image.asset(
+                      images[index],
                       fit: BoxFit.cover,
                       width: double.infinity,
                     ),
@@ -181,7 +192,7 @@ class _FoodHomeState extends State<FoodHome> {
                                       color: Colors.black,
                                       shape: BoxShape.circle,
                                     ),
-                                    child: Icon(Icons.add, color: Colors.white,),
+                                    child: Icon(Icons.add, color: Colors.white),
                                   ),
                                 ),
                               ),
