@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:http_app/screens/food_app/food_home.dart';
-import 'package:http_app/screens/mix/login_screen.dart';
-import 'package:http_app/widgets/bottom_nav_bar.dart';
+import 'package:http_app/screens/food_app/food_login.dart';
+import 'package:http_app/screens/food_app/food_sign_up.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
-    SystemUiOverlayStyle(statusBarColor: Colors.white),
+    SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.light,
+    ),
   );
   runApp(MyApp());
 }
@@ -22,7 +24,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
       ),
-      home: const BottomNavBar(),
+      home: const FoodLogin(),
     );
   }
 }

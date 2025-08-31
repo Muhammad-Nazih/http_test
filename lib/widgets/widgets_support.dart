@@ -19,6 +19,15 @@ class AppWidget {
     );
   }
 
+  static TextStyle bold21TextFieldStyle() {
+    return TextStyle(
+      color: Colors.black54,
+      fontSize: 18.0,
+      fontWeight: FontWeight.w700,
+      fontFamily: 'Poppins',
+    );
+  }
+
   static TextStyle bold3TextFieldStyle() {
     return TextStyle(
       color: Colors.black,
