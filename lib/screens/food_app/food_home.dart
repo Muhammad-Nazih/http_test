@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:http_app/screens/food_app/meal_details.dart';
 import 'package:http_app/widgets/widgets_support.dart';
 
 class FoodHome extends StatefulWidget {
@@ -43,12 +44,12 @@ class _FoodHomeState extends State<FoodHome> {
                   ),
                   Spacer(),
                   Container(
-                    padding: EdgeInsets.zero,
-                    child: IconButton(
-                      padding: EdgeInsets.zero,
-                      onPressed: () {},
-                      icon: Icon(Icons.search),
+                    padding: EdgeInsets.all(3),
+                    decoration: BoxDecoration(
+                      color: Colors.black,
+                      borderRadius: BorderRadius.circular(10),
                     ),
+                    child: Icon(Icons.shopping_cart, color: Colors.white),
                   ),
                 ],
               ),
@@ -126,79 +127,94 @@ class _FoodHomeState extends State<FoodHome> {
                   mainAxisSpacing: 0,
                   childAspectRatio: 0.65,
                 ),
-                itemBuilder: (context, index) => Container(
-                  width: double.infinity,
-                  height: double.infinity,
-                  margin: EdgeInsets.only(top: 5, bottom: 5, right: 5, left: 5),
-                  child: Material(
-                    elevation: 5,
-                    borderRadius: BorderRadius.circular(20),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      padding: EdgeInsets.all(20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Expanded(
-                            child: Center(
-                              child: Image.asset(
-                                'assets/images/salad2.png',
-                                width: 110,
-                                height: 110,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 5),
-                          Text(
-                            'Veggie Taco Hash',
-                            style: TextStyle(
-                              overflow: TextOverflow.ellipsis,
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Poppins',
-                            ),
-                          ),
-                          SizedBox(height: 5),
-                          Text(
-                            'Fresh and Healthy',
-                            style: TextStyle(
-                              color: Colors.grey,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 12,
-                              fontFamily: 'Poppins',
-                            ),
-                          ),
-                          SizedBox(height: 5),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                '\$25.00',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'Poppins',
+                itemBuilder: (context, index) => GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => MealDetails()),
+                    );
+                  },
+                  child: Container(
+                    width: double.infinity,
+                    height: double.infinity,
+                    margin: EdgeInsets.only(
+                      top: 5,
+                      bottom: 5,
+                      right: 5,
+                      left: 5,
+                    ),
+                    child: Material(
+                      elevation: 5,
+                      borderRadius: BorderRadius.circular(20),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        padding: EdgeInsets.all(20),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Expanded(
+                              child: Center(
+                                child: Image.asset(
+                                  'assets/images/salad2.png',
+                                  width: 110,
+                                  height: 110,
+                                  fit: BoxFit.cover,
                                 ),
                               ),
-                              Expanded(
-                                child: IconButton(
-                                  onPressed: () {},
-                                  icon: Container(
-                                    decoration: BoxDecoration(
-                                      color: Colors.black,
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: Icon(Icons.add, color: Colors.white),
+                            ),
+                            SizedBox(height: 5),
+                            Text(
+                              'Veggie Taco Hash',
+                              style: TextStyle(
+                                overflow: TextOverflow.ellipsis,
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Poppins',
+                              ),
+                            ),
+                            SizedBox(height: 5),
+                            Text(
+                              'Fresh and Healthy',
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12,
+                                fontFamily: 'Poppins',
+                              ),
+                            ),
+                            SizedBox(height: 5),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  '\$25.00',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'Poppins',
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                        ],
+                                Expanded(
+                                  child: IconButton(
+                                    onPressed: () {},
+                                    icon: Container(
+                                      decoration: BoxDecoration(
+                                        color: Colors.black,
+                                        shape: BoxShape.circle,
+                                      ),
+                                      child: Icon(
+                                        Icons.add,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),

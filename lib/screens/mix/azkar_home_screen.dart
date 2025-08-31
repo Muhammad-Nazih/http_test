@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http_app/models/section_model.dart';
-import 'package:http_app/screens/section_details_screen.dart';
+import 'package:http_app/screens/mix/section_details_screen.dart';
 
 class AzkarHomeScreen extends StatefulWidget {
   const AzkarHomeScreen({super.key});

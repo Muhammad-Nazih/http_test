@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http_app/screens/food_app/food_home.dart';
-import 'package:http_app/screens/login_screen.dart';
+import 'package:http_app/screens/mix/login_screen.dart';
 import 'package:http_app/widgets/bottom_nav_bar.dart';
 
 void main() {
