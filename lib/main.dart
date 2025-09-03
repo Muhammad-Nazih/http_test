@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http_app/screens/food_app/food_login.dart';
 import 'package:http_app/screens/food_app/food_sign_up.dart';
+import 'package:http_app/screens/mix/login_screen.dart';
+import 'package:http_app/screens/mix/register_screen.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
@@ -22,9 +24,15 @@ class MyApp extends StatelessWidget {
       title: 'Food Delivery App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        textTheme: TextTheme(bodyMedium: TextStyle(color: Colors.black)),
+        inputDecorationTheme: InputDecorationTheme(
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.red.shade300, width: 2.0),
+          ),
+        ),
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
       ),
-      home: const FoodLogin(),
+      home: const LoginScreen(),
     );
   }
 }

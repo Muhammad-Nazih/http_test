@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:http_app/screens/mix/login_screen.dart';
 import 'package:http_app/screens/mix/products_screen.dart';
-import 'package:http_app/screens/mix/register_screen.dart';
 import 'package:sign_button/sign_button.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
+  var nameController = TextEditingController();
+
   var emailController = TextEditingController();
 
   var passwordController = TextEditingController();
@@ -41,10 +43,31 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   Text(
-                    'Login',
-                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                    'Register',
+                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, ),
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: 10),
+                  Text(
+                    'Welcome! please enter your details.',
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: Colors.grey[700]),
+                  ),
+                  SizedBox(height: 10),
+                  TextFormField(
+                    controller: emailController,
+                    keyboardType: TextInputType.emailAddress,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Name is required';
+                      }
+                      return null;
+                    },
+                    decoration: InputDecoration(
+                      labelText: 'Name',
+                      border: OutlineInputBorder(),
+                      prefixIcon: Icon(Icons.person_outline),
+                    ),
+                  ),
+                  SizedBox(height: 15),
                   TextFormField(
                     controller: emailController,
                     keyboardType: TextInputType.emailAddress,
@@ -91,18 +114,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          'Forgot Password?',
-                          style: TextStyle(color: Colors.red[600]),
-                        ),
-                      ),
-                    ],
-                  ),
+                  SizedBox(height: 30),
                   Center(
                     widthFactor: 1.07,
                     child: SizedBox(
@@ -137,7 +149,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           backgroundColor: Colors.red[600],
                         ),
                         child: Text(
-                          'SIGN IN',
+                          'SIGN UP',
                           style: TextStyle(fontSize: 20, color: Colors.white),
                         ),
                       ),
@@ -212,22 +224,22 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 40),
+                  SizedBox(height: 30),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('New to Crinkle?'),
-                      SizedBox(width: 10,),
+                      Text('Already have an account?'),
+                      SizedBox(width: 10),
                       GestureDetector(
                         onTap: () {
                           Navigator.of(context).push(
                             MaterialPageRoute(
-                              builder: (context) => RegisterScreen(),
+                              builder: (context) => LoginScreen(),
                             ),
                           );
                         },
                         child: Text(
-                          'Register',
+                          'Login',
                           style: TextStyle(color: Colors.red[600]),
                         ),
                       ),
